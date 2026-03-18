@@ -112,6 +112,19 @@ class EnterpriseManager:
         if year > 2027:
             raise EnterpriseManagementException("Date.year > 2027")
 
+        # --- TC25: Date must be equal to or after today ---
+        from datetime import datetime
+
+        try:
+            project_date = datetime(year, month, day).date()
+            today_date = datetime.today().date()
+
+            if project_date < today_date:
+                raise EnterpriseManagementException("Invalid Date")
+        except ValueError:
+            # If the date is mathematically impossible,
+            # catch it here to launch the exact error the Excel expects.
+            raise EnterpriseManagementException("Invalid Date")
 
         # Temporary dummy return to keep the method signature valid for TC1
         return "00000000000000000000000000000000"
