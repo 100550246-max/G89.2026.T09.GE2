@@ -139,6 +139,18 @@ class EnterpriseManager:
         if budget > 1000000.00:
             raise EnterpriseManagementException("Budget > 1000000.00")
 
+        # Check decimal limits (TC29 and TC30)
+        str_budget = str(budget)
+        if "." in str_budget:
+            decimals = len(str_budget.split(".")[1])
+            if decimals > 2:
+                raise EnterpriseManagementException("Budget have more than 2 decimals")
+            if decimals < 2:
+                raise EnterpriseManagementException("Budget have less than 2 decimals")
+        else:
+            # If there is no dot (e.g., an integer), it has 0 decimals
+            raise EnterpriseManagementException("Budget have less than 2 decimals")
+
         # Temporary dummy return to keep the method signature valid for TC1
         return "00000000000000000000000000000000"
 

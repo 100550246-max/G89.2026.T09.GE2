@@ -6,7 +6,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "VALID"
 },
 
@@ -17,7 +17,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -28,7 +28,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -39,7 +39,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -50,7 +50,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
   "expected_result": "INVALID"
 },
 
@@ -61,7 +61,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -72,7 +72,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -83,7 +83,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -94,7 +94,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -105,7 +105,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -116,7 +116,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -127,7 +127,7 @@
     "operation_name": 1234567890,
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -138,7 +138,7 @@
     "operation_name": "UC3M Recu",
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -149,7 +149,7 @@
     "operation_name": "Operation Name with more than30\n",
     "department": "HR",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -160,7 +160,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": 10,
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -171,7 +171,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "STORAGE",
     "date": "31/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -182,7 +182,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": 100.57,
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -193,7 +193,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "2026/03/31",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -204,7 +204,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "00/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -215,7 +215,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "32/03/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -226,7 +226,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/00/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -237,7 +237,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/13/2026",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -248,7 +248,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/03/2024",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -259,7 +259,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "31/03/2028",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
@@ -270,7 +270,7 @@
     "operation_name": "UC3M Recursos Humanos",
     "department": "HR",
     "date": "2/12/1990",
-    "budget": 100000.00,
+    "budget": 100000.55,
     "expected_result": "INVALID"
 },
 
