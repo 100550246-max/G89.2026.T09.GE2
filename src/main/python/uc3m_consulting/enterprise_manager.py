@@ -100,6 +100,12 @@ class EnterpriseManager:
         if day > 31:
             raise EnterpriseManagementException("Date.day > 31")
 
+        # Month limits (TC21 and TC22)
+        if month < 1:
+            raise EnterpriseManagementException("Date.month < 1")
+        if month > 12:
+            raise EnterpriseManagementException("Date.month > 12")
+
 
         # Temporary dummy return to keep the method signature valid for TC1
         return "00000000000000000000000000000000"
