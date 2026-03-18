@@ -50,7 +50,9 @@ class EnterpriseManager:
 
         # --- OPERATION_NAME CHECKS ---
 
-
+        # Check if operation_name is a string
+        if not isinstance(operation_name, str):
+            raise EnterpriseManagementException("Operation_name is not a string")
 
         # Temporary dummy return to keep the method signature valid for TC1
         return "00000000000000000000000000000000"
