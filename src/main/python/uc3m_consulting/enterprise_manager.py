@@ -14,6 +14,7 @@ class EnterpriseManager:
                          department: str,
                          date: str,
                          budget: float) -> str:
+        # --- CIF CHEKS ---
 
         # Check if the CIF is a string
         if not isinstance(company_cif, str):
@@ -27,8 +28,19 @@ class EnterpriseManager:
         if not self.validate_cif(company_cif):
             raise EnterpriseManagementException("CIF is invalid")
 
+        # --- PROJECT_ACRONYM CHECKS ---
+
+        # Check if project_acronym is a string
+        if not isinstance(project_acronym, str):
+            raise EnterpriseManagementException("Project acronym is not a valid string")
+
+
+
+
+
         # Temporary dummy return to keep the method signature valid for TC1
         return "00000000000000000000000000000000"
+
 
     @staticmethod
     def validate_cif(cif: str) -> bool:
