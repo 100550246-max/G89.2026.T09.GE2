@@ -34,6 +34,10 @@ class EnterpriseManager:
         if not isinstance(project_acronym, str):
             raise EnterpriseManagementException("Project acronym is not a valid string")
 
+        # Check if project_acronym has the required length
+        if len(project_acronym) < 5 or len(project_acronym) > 10:
+            raise EnterpriseManagementException("Project acronym length must be 3 characters")
+
 
 
 
