@@ -151,8 +151,51 @@ class EnterpriseManager:
             # If there is no dot (e.g., an integer), it has 0 decimals
             raise EnterpriseManagementException("Budget have less than 2 decimals")
 
-        # Temporary dummy return to keep the method signature valid for TC1
-        return "00000000000000000000000000000000"
+        # --- P2: GENERATE PROJECT ID (MD5) ---
+        import hashlib
+        import json
+        import os
+
+        # Concatenate the input data to create a unique base for the hash
+        # (If your teacher specified a specific order or format for this string, adjust it here)
+        data_to_hash = f"{company_cif}{project_acronym}{operation_name}{department}{date}{budget}"
+
+        # Generate the 32-character hexadecimal MD5 hash
+        project_id = hashlib.md5(data_to_hash.encode('utf-8')).hexdigest()
+
+        # --- P3: STORE DATA IN JSON FILE ---
+        # Create a dictionary with the project record
+        project_record = {
+            "Project_ID": project_id,
+            "company_cif": company_cif,
+            "project_acronym": project_acronym,
+            "operation_name": operation_name,
+            "department": department,
+            "date": date,
+            "budget": budget
+        }
+
+        file_path = "corporate_operations.json"
+
+        # Read the file if it exists to avoid overwriting previous records
+        if os.path.exists(file_path):
+            with open(file_path, "r", encoding="utf-8") as file:
+                try:
+                    data_list = json.load(file)
+                except json.JSONDecodeError:
+                    # If the file is empty or corrupted, start a fresh list
+                    data_list = []
+        else:
+            data_list = []
+
+        # Append the new project and write back to the file
+        data_list.append(project_record)
+
+        with open(file_path, "w", encoding="utf-8") as file:
+            json.dump(data_list, file, indent=4)
+
+        # Return the generated MD5 hash as required by the method signature
+        return project_id
 
 
     @staticmethod
