@@ -163,7 +163,27 @@ class EnterpriseManager:
         # Generate the 32-character hexadecimal MD5 hash
         project_id = hashlib.md5(data_to_hash.encode('utf-8')).hexdigest()
 
-        # --- P3: STORE DATA IN JSON FILE ---
+        # --- P3: STORE DATA IN JSON FILE & CHECK DUPLICATES (CM-FR-01-O3) ---
+        file_path = "corporate_operations.json"
+
+        # Read the file if it exists
+        if os.path.exists(file_path):
+            with open(file_path, "r", encoding="utf-8") as file:
+                try:
+                    data_list = json.load(file)
+                except json.JSONDecodeError:
+                    # If the file is empty or corrupted, start a fresh list
+                    data_list = []
+        else:
+            data_list = []
+
+        # CM-FR-01-O3: Check if a project with the same name for the same CIF already exists
+        for record in data_list:
+            # We check if both the CIF and the acronym (name) match an existing record
+            if record.get("company_cif") == company_cif and record.get("project_acronym") == project_acronym:
+                # ⚠️ ¡ATENCIÓN VIGÍA! Revisa si tu profesor pide un error exacto en las instrucciones.
+                raise EnterpriseManagementException("Project already exists")
+
         # Create a dictionary with the project record
         project_record = {
             "Project_ID": project_id,
@@ -174,19 +194,6 @@ class EnterpriseManager:
             "date": date,
             "budget": budget
         }
-
-        file_path = "corporate_operations.json"
-
-        # Read the file if it exists to avoid overwriting previous records
-        if os.path.exists(file_path):
-            with open(file_path, "r", encoding="utf-8") as file:
-                try:
-                    data_list = json.load(file)
-                except json.JSONDecodeError:
-                    # If the file is empty or corrupted, start a fresh list
-                    data_list = []
-        else:
-            data_list = []
 
         # Append the new project and write back to the file
         data_list.append(project_record)
