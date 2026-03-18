@@ -22,23 +22,33 @@ class EnterpriseManager:
 
         # Check if the CIF length is exactly 9 characters
         if len(company_cif) != 9:
-            raise EnterpriseManagementException("CIF length must be exactly 9 characters")
+            if len(company_cif) < 9:
+                raise EnterpriseManagementException("CIF length < 9")
+            else:
+                raise EnterpriseManagementException("CIF length > 9")
 
         # Validate the CIF format and checksum
         if not self.validate_cif(company_cif):
-            raise EnterpriseManagementException("CIF is invalid")
+            raise EnterpriseManagementException("Invalid CIF code")
 
         # --- PROJECT_ACRONYM CHECKS ---
 
         # Check if project_acronym is a string
         if not isinstance(project_acronym, str):
-            raise EnterpriseManagementException("Project acronym is not a valid string")
+            raise EnterpriseManagementException("Project acronym is not a string")
 
         # Check if project_acronym has the required length
-        if len(project_acronym) < 5 or len(project_acronym) > 10:
-            raise EnterpriseManagementException("Project acronym length must be 3 characters")
+        if len(project_acronym) < 5:
+            raise EnterpriseManagementException("Project acronym length < 5")
 
+        if len(project_acronym) > 10:
+            raise EnterpriseManagementException("Project acronym length > 10")
 
+        # Check if it only contains alphanumeric characters (no special symbols)
+        if not project_acronym.isalnum():
+            raise EnterpriseManagementException("Invalid Project_acronym")
+
+        # --- OPERATION_NAME CHECKS ---
 
 
 
