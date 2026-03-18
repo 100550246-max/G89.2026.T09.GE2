@@ -132,6 +132,13 @@ class EnterpriseManager:
         if not isinstance(budget, float):
             raise EnterpriseManagementException("Budget is not a float")
 
+        # Check budget limits (TC27 and TC28)
+        if budget < 50000.00:
+            raise EnterpriseManagementException("Budget < 50000.00")
+
+        if budget > 1000000.00:
+            raise EnterpriseManagementException("Budget > 1000000.00")
+
         # Temporary dummy return to keep the method signature valid for TC1
         return "00000000000000000000000000000000"
 
