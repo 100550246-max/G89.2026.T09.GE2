@@ -79,6 +79,19 @@ class EnterpriseManager:
         if not isinstance(date, str):
             raise EnterpriseManagementException("Date is not a string")
 
+        # Check basic format DD/MM/YYYY
+        if len(date) != 10:
+            raise EnterpriseManagementException("Date is not in format DD/MM/YYYY")
+
+        if date[2] != "/" or date[5] != "/":
+            raise EnterpriseManagementException("Date is not in format DD/MM/YYYY")
+
+        day_str, month_str, year_str = date.split("/")
+        if not (day_str.isdigit() and month_str.isdigit() and year_str.isdigit()):
+            raise EnterpriseManagementException("Date is not in format DD/MM/YYYY")
+
+
+
         # Temporary dummy return to keep the method signature valid for TC1
         return "00000000000000000000000000000000"
 
