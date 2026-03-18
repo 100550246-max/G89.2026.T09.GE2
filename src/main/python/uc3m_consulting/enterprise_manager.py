@@ -126,6 +126,12 @@ class EnterpriseManager:
             # catch it here to launch the exact error the Excel expects.
             raise EnterpriseManagementException("Invalid Date")
 
+        # --- BUDGET CHECKS ---
+
+        # Check if budget is a numeric value (TC26)
+        if not isinstance(budget, float):
+            raise EnterpriseManagementException("Budget is not a float")
+
         # Temporary dummy return to keep the method signature valid for TC1
         return "00000000000000000000000000000000"
 
