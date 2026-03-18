@@ -1,4 +1,4 @@
-from src.main.python.uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
 
 class EnterpriseManager:
