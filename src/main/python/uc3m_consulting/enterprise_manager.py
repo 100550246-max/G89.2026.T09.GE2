@@ -90,6 +90,15 @@ class EnterpriseManager:
         if not (day_str.isdigit() and month_str.isdigit() and year_str.isdigit()):
             raise EnterpriseManagementException("Date is not in format DD/MM/YYYY")
 
+        day = int(day_str)
+        month = int(month_str)
+        year = int(year_str)
+
+        # Day limits (TC19 and TC20)
+        if day < 1:
+            raise EnterpriseManagementException("Date.day < 1")
+        if day > 31:
+            raise EnterpriseManagementException("Date.day > 31")
 
 
         # Temporary dummy return to keep the method signature valid for TC1
