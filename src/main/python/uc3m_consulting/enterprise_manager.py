@@ -68,6 +68,11 @@ class EnterpriseManager:
         if not isinstance(department, str):
             raise EnterpriseManagementException("Department is not a string")
 
+        # Check if department is within the allowed options
+        valid_departments = ["HR", "FINACE", "LEGAL", "LOGISTICS"]
+        if department not in valid_departments:
+            raise EnterpriseManagementException("Invalid department")
+
         # Temporary dummy return to keep the method signature valid for TC1
         return "00000000000000000000000000000000"
 
