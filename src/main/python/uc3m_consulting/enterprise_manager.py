@@ -54,6 +54,14 @@ class EnterpriseManager:
         if not isinstance(operation_name, str):
             raise EnterpriseManagementException("Operation_name is not a string")
 
+        # Check if length is less than 10
+        if len(operation_name) < 10:
+            raise EnterpriseManagementException("Operation_name lenght < 10")
+
+        # Check if length is greater than 30
+        if len(operation_name) > 30:
+            raise EnterpriseManagementException("Operation_name length > 30")
+
         # Temporary dummy return to keep the method signature valid for TC1
         return "00000000000000000000000000000000"
 
