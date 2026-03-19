@@ -210,7 +210,8 @@ class EnterpriseManager:
         return project_id
 
     # --- METHOD 2 ---
-
+    def register_document(self, input_file: str):
+        pass
 
 
     # --- METHOD 3 ---
