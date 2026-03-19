@@ -1,3 +1,6 @@
+import os
+import json
+from datetime import datetime, timezone
 from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
 
@@ -205,6 +208,7 @@ class EnterpriseManager:
 
         # Return the generated MD5 hash as required by the method signature
         return project_id
+
     # --- METHOD 2 ---
 
 
@@ -212,7 +216,13 @@ class EnterpriseManager:
     # --- METHOD 3 ---
 
     def check_project_budget(self, project_id: str):
+        """
+        Calculates the total budget for a given project_id by reading flows.json.
+        """
 
+        # --- NODES 1 & 2: Check if project_id is a string ---
+        if type(project_id) != str:
+            raise EnterpriseManagementException("Project ID is not a string")
 
     @staticmethod
     def validate_cif(cif: str) -> bool:
