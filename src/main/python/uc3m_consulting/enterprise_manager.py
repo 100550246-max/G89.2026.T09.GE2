@@ -7,6 +7,8 @@ class EnterpriseManager:
     def __init__(self):
         pass
 
+# --- METHOD 1 ---
+
     def register_project(self,
                          company_cif: str,
                          project_acronym: str,
@@ -203,6 +205,13 @@ class EnterpriseManager:
 
         # Return the generated MD5 hash as required by the method signature
         return project_id
+    # --- METHOD 2 ---
+
+
+
+    # --- METHOD 3 ---
+
+    def check_project_budget(self, project_id: str):
 
 
     @staticmethod

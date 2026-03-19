@@ -1,0 +1,37 @@
+[
+  {
+    "ID TEST": "TC1",
+    "project_id": 12345678901234567890123456789012,
+    "Expected Result": "Project ID is not a string"
+  },
+  {
+    "ID TEST": "TC2",
+    "project_id": "36c61f04ecacf8f68fab8799d1a6f7",
+    "Expected Result": "Project ID must have exactly 32 Characters"
+  },
+  {
+    "ID TEST": "TC3",
+    "project_id": "36c61f04ecacf8f68fab8799d1a6f73z",
+    "Expected Result": "Invalid Project Id"
+  },
+  {
+    "ID TEST": "TC4",
+    "project_id": "36c61f04ecacf8f68fab8799d1-6f73f",
+    "Expected Result": "Invalid Project Id"
+  },
+  {
+    "ID TEST": "TC5",
+    "project_id": "36c61f04ecacf8f68fab8799d1a6f73f",
+    "Expected Result": "json file not founded"
+  },
+  {
+    "ID TEST": "TC6",
+    "project_id": "00000000000000000000000000000000",
+    "Expected Result": "Project Id is not registered"
+  },
+  {
+    "ID TEST": "TC7",
+    "project_id": "36c61f04ecacf8f68fab8799d1a6f73f",
+    "Expected Result": "True"
+  }
+]
