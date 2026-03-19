@@ -219,10 +219,102 @@ class EnterpriseManager:
         """
         Calculates the total budget for a given project_id by reading flows.json.
         """
+        import os
+        import json
+        from datetime import datetime, timezone
 
         # --- NODES 1 & 2: Check if project_id is a string ---
         if type(project_id) != str:
             raise EnterpriseManagementException("Project ID is not a string")
+
+        # --- NODES 3 & 4: Check if length is exactly 32 ---
+        if len(project_id) != 32:
+            raise EnterpriseManagementException("Project ID must have exactly 32 Characters")
+
+        # --- NODES 5, 6 & 7: Check letters and numbers manually ---
+        # Iterate through each character in the project_id
+        for char in project_id:
+            if char.isalpha():
+                # Node 5: If it is a letter, it must be between a-f (or A-F)
+                if char.lower() not in ['a', 'b', 'c', 'd', 'e', 'f']:
+                    raise EnterpriseManagementException("Invalid Project Id")
+            elif char.isdigit():
+                # Node 7: If it is a number, it must be between 0-9
+                # (char.isdigit() already guarantees it is 0-9, so we just pass)
+                pass
+            else:
+                # If it's neither a letter nor a number (e.g., '-', '!', ' '), it fails
+                raise EnterpriseManagementException("Invalid Project Id")
+
+        # --- NODES 8 & 9: Existing json file? ---
+        file_path = "flows.json"
+        if not os.path.exists(file_path):
+            raise EnterpriseManagementException("json file not founded")
+
+        # Read the flows.json file
+        try:
+            with open(file_path, "r", encoding="utf-8") as file:
+                flows_data = json.load(file)
+        except json.JSONDecodeError:
+            # If the file exists but is empty or corrupt, it acts as not found
+            raise EnterpriseManagementException("json file not founded")
+
+        # --- NODES 10 & 11: Project ID in json? & Calculate Operations ---
+        project_found = False
+        total_budget = 0.0
+
+        # Loop through the movements to find our project and calculate
+        for entry in flows_data:
+            # Trap evasion: check for both uppercase and camelCase keys
+            current_id = entry.get("projectID") or entry.get("PROJECT_ID")
+
+            if current_id == project_id:
+                project_found = True
+
+                # Sum inflows (handling both "inFlow" and "inflow")
+                if "inFlow" in entry:
+                    total_budget += float(entry["inFlow"])
+                elif "inflow" in entry:
+                    total_budget += float(entry["inflow"])
+
+                # Subtract outflows (handling both "outFlow" and "outflow")
+                if "outFlow" in entry:
+                    total_budget -= float(entry["outFlow"])
+                elif "outflow" in entry:
+                    total_budget -= float(entry["outflow"])
+
+        # If we finished reading the whole file and didn't find the ID
+        if not project_found:
+            raise EnterpriseManagementException("Project Id is not registered")
+
+        # --- NODE 12: Operations (Save to output file) ---
+        # Create the dictionary with the required fields (ID, UTC timestamp, result)
+        output_record = {
+            "PROJECT_ID": project_id,
+            "date": datetime.now(timezone.utc).timestamp(),
+            "result": total_budget
+        }
+
+        # The manual says "a json output file", we will use this name
+        output_file = "project_budgets.json"
+
+        # Read existing budgets file to not overwrite other projects
+        if os.path.exists(output_file):
+            with open(output_file, "r", encoding="utf-8") as file:
+                try:
+                    output_data = json.load(file)
+                except json.JSONDecodeError:
+                    output_data = []
+        else:
+            output_data = []
+
+        output_data.append(output_record)
+
+        with open(output_file, "w", encoding="utf-8") as file:
+            json.dump(output_data, file, indent=4)
+
+        # --- NODE 13: END (Return True) ---
+        return True
 
     @staticmethod
     def validate_cif(cif: str) -> bool:
