@@ -4,35 +4,47 @@
         "type": "DEPOSIT",
         "project_id": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d",
         "file_name": "testdoc1.pdf",
+        "register_date": 1774034359.240509,
+        "document_signature": "0189d2c2d320dcbc42c369c57882467ed915cef6a15d2910990a042d2e0a66da"
     },
     {
         "alg": "SHA-256",
         "type": "DEPOSIT",
         "project_id": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d",
         "file_name": "testdoc1.docx",
+        "register_date": 1774034359.240509,
+        "document_signature": "5a79a2183cad313936786ae2783273bb4f253e6af68eebcde67149b0164d251f"
     },
     {
         "alg": "SHA-256",
         "type": "DEPOSIT",
         "project_id": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d",
         "file_name": "testdoc1.xlsx",
+        "register_date": 1774034359.248508,
+        "document_signature": "b1d7aee046a689992b4b98158d3ae73d63a82788b79e3892721dbad1d4f4a0d5"
     },
     {
         "alg": "SHA-256",
         "type": "DEPOSIT",
         "project_id": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d",
         "file_name": "testdoc1.pdf",
+        "register_date": 1774034360.089225,
+        "document_signature": "9bf0d6e68b54fa4d63879cfb3ea1f17a8c22e584ae7e3f6c5cb7a8888582950d"
     },
     {
         "alg": "SHA-256",
         "type": "DEPOSIT",
         "project_id": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d",
         "file_name": "testdoc1.docx",
+        "register_date": 1774034360.089225,
+        "document_signature": "3b6406320bc7d5908bb907e277a248787d42b70c53e1eec6c7cbe93c046d5e68"
     },
     {
         "alg": "SHA-256",
         "type": "DEPOSIT",
         "project_id": "1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d",
         "file_name": "testdoc1.xlsx",
+        "register_date": 1774034360.104865,
+        "document_signature": "182b95f5157e66f89c4f78de3bc85b42dcf7d103b664e5933b3cca378f677f92"
     }
 ]

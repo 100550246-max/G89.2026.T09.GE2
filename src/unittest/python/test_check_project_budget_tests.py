@@ -1,3 +1,4 @@
+"""Tests for the check_project_budget method"""
 import unittest
 import json
 import os
@@ -7,6 +8,7 @@ from uc3m_consulting.enterprise_management_exception import EnterpriseManagement
 
 
 class TestCheckProjectBudget(unittest.TestCase):
+    """Class containing tests for check project budget"""
 
     def test_check_project_budget_from_json(self):
         """
