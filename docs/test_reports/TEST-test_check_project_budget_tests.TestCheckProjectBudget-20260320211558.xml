@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test_check_project_budget_tests.TestCheckProjectBudget-20260320211558" tests="1" file="test_check_project_budget_tests.py" time="0.190" timestamp="2026-03-20T21:16:00" failures="0" errors="0" skipped="0">
+	<testcase classname="test_check_project_budget_tests.TestCheckProjectBudget" name="test_check_project_budget_from_json" time="0.190" timestamp="2026-03-20T21:16:00"/>
+</testsuite>
