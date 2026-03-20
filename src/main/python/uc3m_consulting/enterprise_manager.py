@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
 
+
 class EnterpriseManager:
     """Class for providing the methods for managing the projects"""
 
@@ -210,8 +211,29 @@ class EnterpriseManager:
         return project_id
 
     # --- METHOD 2 ---
-    def register_document(self, input_file: str):
-        pass
+    def register_document(self, input_file: str) -> str:
+        import json
+        from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+        from uc3m_consulting.project_document import ProjectDocument
+
+
+        try:
+            with open(input_file, "r", encoding="utf-8") as file:
+                data = json.load(file)
+        except FileNotFoundError:
+            raise EnterpriseManagementException("File not found")
+        except json.JSONDecodeError:
+            raise EnterpriseManagementException("JSON Decode Error - Wrong Syntax")
+
+        p_id = data.get("PROJECT_ID")
+        f_name = data.get("FILENAME")
+
+        try:
+            document_obj = ProjectDocument(p_id, f_name)
+        except Exception as e:
+            raise EnterpriseManagementException(f"Error instantiating ProjectDocument: {str(e)}")
+
+        return document_obj.document_signature
 
 
     # --- METHOD 3 ---

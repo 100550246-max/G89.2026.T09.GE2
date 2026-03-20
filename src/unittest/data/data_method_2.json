@@ -1,0 +1,557 @@
+{
+  "test_cases": [
+    {
+      "id_test": "TC1",
+      "type": "VALID",
+      "file_path": "tc1.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "SHA-256"
+    },
+    {
+      "id_test": "TC2",
+      "type": "VALID",
+      "file_path": "tc2.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.docx\"}",
+      "expected_result": "SHA-256"
+    },
+    {
+      "id_test": "TC3",
+      "type": "VALID",
+      "file_path": "tc3.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.xlsx\"}",
+      "expected_result": "SHA-256"
+    },
+    {
+      "id_test": "TC4",
+      "type": "DELETION",
+      "file_path": "tc4.json",
+      "content": " ",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC5",
+      "type": "DUPLICATION",
+      "file_path": "tc5.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC6",
+      "type": "DELETION",
+      "file_path": "tc6.json",
+      "content": "\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC7",
+      "type": "DUPLICATION",
+      "file_path": "tc7.json",
+      "content": "{{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC8",
+      "type": "MODIFICATION",
+      "file_path": "tc8.json",
+      "content": "[\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC9",
+      "type": "DELETION",
+      "file_path": "tc9.json",
+      "content": "{}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC10",
+      "type": "DUPLICATION",
+      "file_path": "tc10.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\", \"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC11",
+      "type": "DELETION",
+      "file_path": "tc11.json",
+      "content": "{, \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC12",
+      "type": "DUPLICATION",
+      "file_path": "tc12.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\"\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC13",
+      "type": "DELETION",
+      "file_path": "tc13.json",
+      "content": "{ : \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC14",
+      "type": "DUPLICATION",
+      "file_path": "tc14.json",
+      "content": "{\"PROJECT_ID\"\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC15",
+      "type": "DELETION",
+      "file_path": "tc15.json",
+      "content": "{PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC16",
+      "type": "DUPLICATION",
+      "file_path": "tc16.json",
+      "content": "{\"\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC17",
+      "type": "MODIFICATION",
+      "file_path": "tc17.json",
+      "content": "{'PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC18",
+      "type": "DELETION",
+      "file_path": "tc18.json",
+      "content": "{\"\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC19",
+      "type": "DUPLICATION",
+      "file_path": "tc19.json",
+      "content": "{\"PROJECT_IDPROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC20",
+      "type": "MODIFICATION",
+      "file_path": "tc20.json",
+      "content": "{\"ID_PROJECT\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC21",
+      "type": "DELETION",
+      "file_path": "tc21.json",
+      "content": "{\"PROJECT_ID: \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC22",
+      "type": "DUPLICATION",
+      "file_path": "tc22.json",
+      "content": "{\"PROJECT_ID\"\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC23",
+      "type": "MODIFICATION",
+      "file_path": "tc23.json",
+      "content": "{\"PROJECT_ID': \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC24",
+      "type": "DELETION",
+      "file_path": "tc24.json",
+      "content": "{\"PROJECT_ID\" \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC25",
+      "type": "DUPLICATION",
+      "file_path": "tc25.json",
+      "content": "{\"PROJECT_ID\":: \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC26",
+      "type": "MODIFICATION",
+      "file_path": "tc26.json",
+      "content": "{\"PROJECT_ID\"= \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC27",
+      "type": "DELETION",
+      "file_path": "tc27.json",
+      "content": "{\"PROJECT_ID\": , \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC28",
+      "type": "DUPLICATION",
+      "file_path": "tc28.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\"\"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC29",
+      "type": "DELETION",
+      "file_path": "tc29.json",
+      "content": "{\"PROJECT_ID\": 1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC30",
+      "type": "DUPLICATION",
+      "file_path": "tc30.json",
+      "content": "{\"PROJECT_ID\": \"\"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC31",
+      "type": "MODIFICATION",
+      "file_path": "tc31.json",
+      "content": "{\"PROJECT_ID\": '1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC32",
+      "type": "DELETION",
+      "file_path": "tc32.json",
+      "content": "{\"PROJECT_ID\": \"\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC33",
+      "type": "DUPLICATION",
+      "file_path": "tc33.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC34",
+      "type": "MODIFICATION",
+      "file_path": "tc34.json",
+      "content": "{\"PROJECT_ID\": \"g2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC35",
+      "type": "DELETION",
+      "file_path": "tc35.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d, \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC36",
+      "type": "DUPLICATION",
+      "file_path": "tc36.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\"\", \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC37",
+      "type": "MODIFICATION",
+      "file_path": "tc37.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d', \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC38",
+      "type": "DELETION",
+      "file_path": "tc38.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\" \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC39",
+      "type": "DUPLICATION",
+      "file_path": "tc39.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\",, \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC40",
+      "type": "MODIFICATION",
+      "file_path": "tc40.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\" ; \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC41",
+      "type": "DELETION",
+      "file_path": "tc41.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", }",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC42",
+      "type": "DUPLICATION",
+      "file_path": "tc42.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\" \"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC43",
+      "type": "DELETION",
+      "file_path": "tc43.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", : \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC44",
+      "type": "DUPLICATION",
+      "file_path": "tc44.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\"\"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC45",
+      "type": "DELETION",
+      "file_path": "tc45.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC46",
+      "type": "DUPLICATION",
+      "file_path": "tc46.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"\"FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC47",
+      "type": "MODIFICATION",
+      "file_path": "tc47.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", 'FILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC48",
+      "type": "DELETION",
+      "file_path": "tc48.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC49",
+      "type": "DUPLICATION",
+      "file_path": "tc49.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAMEFILENAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC50",
+      "type": "MODIFICATION",
+      "file_path": "tc50.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILE_NAME\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC51",
+      "type": "DELETION",
+      "file_path": "tc51.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME: \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC52",
+      "type": "DUPLICATION",
+      "file_path": "tc52.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\"\": \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC53",
+      "type": "MODIFICATION",
+      "file_path": "tc53.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME': \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC54",
+      "type": "DELETION",
+      "file_path": "tc54.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\" \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC55",
+      "type": "DUPLICATION",
+      "file_path": "tc55.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\":: \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC56",
+      "type": "MODIFICATION",
+      "file_path": "tc56.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\"= \"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC57",
+      "type": "DELETION",
+      "file_path": "tc57.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": }",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC58",
+      "type": "DUPLICATION",
+      "file_path": "tc58.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"\"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC59",
+      "type": "DELETION",
+      "file_path": "tc59.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC60",
+      "type": "DUPLICATION",
+      "file_path": "tc60.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"\"testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC61",
+      "type": "MODIFICATION",
+      "file_path": "tc61.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": 'testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC62",
+      "type": "DELETION",
+      "file_path": "tc62.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC63",
+      "type": "DUPLICATION",
+      "file_path": "tc63.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdftestdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC64",
+      "type": "DELETION",
+      "file_path": "tc64.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \".pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC65",
+      "type": "DUPLICATION",
+      "file_path": "tc65.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1testdoc1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC66",
+      "type": "DELETION",
+      "file_path": "tc66.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC67",
+      "type": "DUPLICATION",
+      "file_path": "tc67.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc11.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC68",
+      "type": "MODIFICATION",
+      "file_path": "tc68.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdo#1.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC69",
+      "type": "DELETION",
+      "file_path": "tc69.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC70",
+      "type": "DUPLICATION",
+      "file_path": "tc70.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf.pdf\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC71",
+      "type": "MODIFICATION",
+      "file_path": "tc71.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.txt\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC72",
+      "type": "MODIFICATION",
+      "file_path": "tc72.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.txt\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC73",
+      "type": "MODIFICATION",
+      "file_path": "tc73.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.txt\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC74",
+      "type": "DELETION",
+      "file_path": "tc74.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC75",
+      "type": "DUPLICATION",
+      "file_path": "tc75.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"\"}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC76",
+      "type": "MODIFICATION",
+      "file_path": "tc76.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf'}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC77",
+      "type": "DELETION",
+      "file_path": "tc77.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC78",
+      "type": "DUPLICATION",
+      "file_path": "tc78.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"}}",
+      "expected_result": "EnterpriseManagementException"
+    },
+    {
+      "id_test": "TC79",
+      "type": "MODIFICATION",
+      "file_path": "tc79.json",
+      "content": "{\"PROJECT_ID\": \"1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d\", \"FILENAME\": \"testdoc1.pdf\"]",
+      "expected_result": "EnterpriseManagementException"
+    }
+  ]
+}
