@@ -217,15 +217,17 @@ class EnterpriseManager:
         import hashlib
         from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
-
         if type(input_file) is not str:
             raise EnterpriseManagementException("Invalid file path type")
 
         if not os.path.exists(input_file):
             raise EnterpriseManagementException("File not found")
 
-        with open(input_file, "r", encoding="utf-8") as file:
-            data = json.load(file)
+        try:
+            with open(input_file, "r", encoding="utf-8") as file:
+                data = json.load(file)
+        except json.JSONDecodeError:
+            raise EnterpriseManagementException("JSON Decode Error - Wrong format")
 
         project_id = data.get("PROJECT_ID", "")
         filename = data.get("FILENAME", "")
