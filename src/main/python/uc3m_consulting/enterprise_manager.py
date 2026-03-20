@@ -214,6 +214,7 @@ class EnterpriseManager:
     def register_document(self, input_file):
         import os
         import json
+        import re
         import hashlib
         from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
@@ -237,9 +238,11 @@ class EnterpriseManager:
         project_id = data["PROJECT_ID"]
         filename = data["FILENAME"]
 
+        if type(project_id) is not str or not re.fullmatch(r"^[0-9a-fA-F]{32}$", project_id):
+            raise EnterpriseManagementException("Invalid PROJECT_ID format")
+
         data_to_hash = project_id + filename
         return hashlib.sha256(data_to_hash.encode('utf-8')).hexdigest()
-
 
     # --- METHOD 3 ---
 
