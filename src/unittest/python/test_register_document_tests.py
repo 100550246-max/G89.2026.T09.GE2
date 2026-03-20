@@ -1,16 +1,16 @@
+"""Tests for the register_document method"""
 import unittest
 import json
 import os
-import shutil
 from uc3m_consulting.enterprise_manager import EnterpriseManager
 from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
 
 class TestRegisterDocument(unittest.TestCase):
+    """Class containing tests for register document"""
+
     def test_all_cases_from_master_json(self):
-        import json
-        import os
-        from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
+        """Tests all cases from the master JSON file"""
 
         with open("src/unittest/data/data_method_2.json", "r", encoding="utf-8") as f:
             data = json.load(f)
