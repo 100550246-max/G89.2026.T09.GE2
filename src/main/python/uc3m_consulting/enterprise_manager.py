@@ -229,8 +229,13 @@ class EnterpriseManager:
         except json.JSONDecodeError:
             raise EnterpriseManagementException("JSON Decode Error - Wrong format")
 
-        project_id = data.get("PROJECT_ID", "")
-        filename = data.get("FILENAME", "")
+        if "PROJECT_ID" not in data:
+            raise EnterpriseManagementException("Invalid PROJECT_ID key")
+        if "FILENAME" not in data:
+            raise EnterpriseManagementException("Invalid FILENAME key")
+
+        project_id = data["PROJECT_ID"]
+        filename = data["FILENAME"]
 
         data_to_hash = project_id + filename
         return hashlib.sha256(data_to_hash.encode('utf-8')).hexdigest()
