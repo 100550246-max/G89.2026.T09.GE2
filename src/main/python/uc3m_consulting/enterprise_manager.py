@@ -211,29 +211,27 @@ class EnterpriseManager:
         return project_id
 
     # --- METHOD 2 ---
-    def register_document(self, input_file: str) -> str:
+    def register_document(self, input_file):
+        import os
         import json
+        import hashlib
         from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
-        from uc3m_consulting.project_document import ProjectDocument
 
 
-        try:
-            with open(input_file, "r", encoding="utf-8") as file:
-                data = json.load(file)
-        except FileNotFoundError:
+        if type(input_file) is not str:
+            raise EnterpriseManagementException("Invalid file path type")
+
+        if not os.path.exists(input_file):
             raise EnterpriseManagementException("File not found")
-        except json.JSONDecodeError:
-            raise EnterpriseManagementException("JSON Decode Error - Wrong Syntax")
 
-        p_id = data.get("PROJECT_ID")
-        f_name = data.get("FILENAME")
+        with open(input_file, "r", encoding="utf-8") as file:
+            data = json.load(file)
 
-        try:
-            document_obj = ProjectDocument(p_id, f_name)
-        except Exception as e:
-            raise EnterpriseManagementException(f"Error instantiating ProjectDocument: {str(e)}")
+        project_id = data.get("PROJECT_ID", "")
+        filename = data.get("FILENAME", "")
 
-        return document_obj.document_signature
+        data_to_hash = project_id + filename
+        return hashlib.sha256(data_to_hash.encode('utf-8')).hexdigest()
 
 
     # --- METHOD 3 ---
