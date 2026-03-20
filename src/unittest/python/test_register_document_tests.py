@@ -12,7 +12,7 @@ class TestRegisterDocument(unittest.TestCase):
         import os
         from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
-        with open("data_method_2.json", "r", encoding="utf-8") as f:
+        with open("src/unittest/data/data_method_2.json", "r", encoding="utf-8") as f:
             data = json.load(f)
 
         test_cases = data.get("test_cases", [])
