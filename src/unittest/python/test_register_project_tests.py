@@ -1,5 +1,7 @@
+"""Tests for the register_project method"""
 import unittest
 import json
+import os
 from uc3m_consulting.enterprise_manager import EnterpriseManager
 from uc3m_consulting.enterprise_management_exception import EnterpriseManagementException
 
@@ -10,12 +12,11 @@ class TestRegisterProject(unittest.TestCase):
     def test_register_project_from_json(self):
         """Execute all test cases from the JSON file"""
         #clean
-        import os
         if os.path.exists("corporate_operations.json"):
             os.remove("corporate_operations.json")
 
         # Load the JSON file
-        with open("src/unittest/data/data_method_1.json", "r") as f:
+        with open("src/unittest/data/data_method_1.json", "r", encoding="utf-8") as f:
             data_list = json.load(f)
 
         my_manager = EnterpriseManager()
@@ -46,5 +47,7 @@ class TestRegisterProject(unittest.TestCase):
                             case["date"],
                             case["budget"]
                         )
+
+
 if __name__ == '__main__':
     unittest.main()
